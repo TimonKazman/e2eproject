@@ -1,5 +1,6 @@
 import os
 import sys
+sys.path.append('C:\\Users\\timon\\OneDrive\\Documents\\Data Science\\E2EProject\\src')
 from exception import CustomException
 from logger import logging
 import pandas as pd
