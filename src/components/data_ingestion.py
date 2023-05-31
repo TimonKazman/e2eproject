@@ -6,6 +6,9 @@ sys.path.append('C:\\Users\\timon\\OneDrive\\Documents\\Data_Science\\E2EProject
 from data_transformation import DataTransformation
 from data_transformation import DataTransformationConfig
 
+from model_trainer import ModelTrainerConfig
+from model_trainer import ModelTrainer
+
 from exception import CustomException
 from logger import logging
 
@@ -59,4 +62,8 @@ if __name__ == "__main__":
     train_data, test_data = obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
+
+    modeltrainer = ModelTrainer()
+    eval = modeltrainer.initiate_model_trainer(train_arr, test_arr)
+    print(f"r2_score: {eval[0]}, rmse: {eval[1]}, mae: {eval[2]}, mape: {eval[3]}.")
