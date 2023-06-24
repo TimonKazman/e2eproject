@@ -57,7 +57,7 @@ class ModelTrainer:
                  }
 
             lgb_model_hyper = lgb.LGBMRegressor(boosting_type='gbdt',
-                                                objective='regression', verbose=0)
+                                                objective='regression')
 
             grid_search = RandomizedSearchCV(estimator=lgb_model_hyper, 
                                              param_distributions=parameters, 
@@ -73,7 +73,6 @@ class ModelTrainer:
 
             best_model = lgb.LGBMRegressor(boosting_type='gbdt', 
                               objective='regression',
-                              verbose=0,
                               **grid_search.best_params_)
 
             best_model = best_model.fit(X_train, y_train, 
