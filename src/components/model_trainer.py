@@ -39,7 +39,7 @@ class ModelTrainer:
             '''
 
             features = ['hour', 'dayofweek', 'quarter', 'month', 'year',
-                        'dayofyear','moving_avg_7','moving_avg_14', 'moving_avg_30', 'lag_1', 'lag_2']
+                        'dayofyear']
             target = "PJME_MW"
 
             X_train = train_array[features]

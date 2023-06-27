@@ -6,4 +6,6 @@ scikit-learn
 scipy
 lightgbm
 dill
+Flask
+psycopg2
 #-e .

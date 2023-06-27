@@ -51,11 +51,11 @@ class DataTransformation:
             df['dayofyear'] = df.index.dayofyear
             df['dayofmonth'] = df.index.day
             df['weekofyear'] = df.index.isocalendar().week.astype('int')
-            df['moving_avg_7'] = df['PJME_MW'].rolling(window=7).mean()
-            df['moving_avg_14'] = df['PJME_MW'].rolling(window=14).mean()
-            df['moving_avg_30'] = df['PJME_MW'].rolling(window=30).mean()
-            df['lag_1'] = df['PJME_MW'].shift(1)
-            df['lag_2'] = df['PJME_MW'].shift(2)
+            # df['moving_avg_7'] = df['PJME_MW'].rolling(window=7).mean()
+            # df['moving_avg_14'] = df['PJME_MW'].rolling(window=14).mean()
+            # df['moving_avg_30'] = df['PJME_MW'].rolling(window=30).mean()
+            # df['lag_1'] = df['PJME_MW'].shift(364)
+            # df['lag_2'] = df['PJME_MW'].shift(728)
 
             df.dropna(inplace=True)
 
@@ -69,8 +69,7 @@ class DataTransformation:
         try:
 
             features = ['hour', 'dayofweek', 'quarter', 'month', 'year',
-                        'dayofyear','moving_avg_7','moving_avg_14', 
-                        'moving_avg_30', 'lag_1', 'lag_2']
+                        'dayofyear']
             target = "PJME_MW"
 
             train_df = pd.read_csv(train_path)

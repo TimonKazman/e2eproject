@@ -27,12 +27,11 @@ def predict_datapoint():
         )
 
         df = date_string.get_data_as_data_frame()
-        print(df)
-
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(df)
-        
-        return render_template("home.html", results = results[0])
+        results = pd.concat([df, pd.DataFrame(results, columns=["MegaWatt"])], axis=1)
+        return render_template("home.html", results = results)
     
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", debug=True)
+    

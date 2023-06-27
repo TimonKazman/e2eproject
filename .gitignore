@@ -26,7 +26,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-data_ingest.py
+src/components/data_ingest.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
