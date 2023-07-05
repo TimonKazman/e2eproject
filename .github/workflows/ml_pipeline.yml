@@ -1,0 +1,34 @@
+name: Continouse ML Pipeline
+on:
+    push:
+        branches:
+            - main
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+        # container: docker://...
+        steps:
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                python-version: '3.9.2'
+            
+            - name: Install dependencies
+              run: pip install -r requirements.txt
+
+            - name: Run data ingestion #file which trains the model and generates a plot.png & metrics.json to compare branch vs main
+              run: python .\src\components\data_ingestion.py
+
+            # - name: Run model training
+            #   run: python data_transformation.py
+
+            # - name: Run model training
+            #   run: python model_trainer.py
+
+            - name: Commit the results
+              run: |
+                git config --global user.name "Timon Kazman"
+                git config --global user.email "timonkazman@yahoo.de"
+                git add .
+                git commit -m "Add results"
