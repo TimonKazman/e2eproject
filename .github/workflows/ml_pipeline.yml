@@ -8,17 +8,24 @@ jobs:
     build:
         runs-on: ubuntu-latest
         # container: docker://...
+        defaults:
+            run:
+                working-directory: ./src/
+        # env:
+        #     MODE: ".env"
         steps:
             - name: Set up Python
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v2 #install environment
               with:
                 python-version: '3.x'
             
             - name: Install dependencies
-              run: pip install -r ../requirements.txt
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r ../requirements.txt
 
             - name: Run data ingestion #file which trains the model and generates a plot.png & metrics.json to compare branch vs main
-              run: python .\src\components\data_ingestion.py
+              run: python ./components/data_ingestion.py
 
             # - name: Run model training
             #   run: python data_transformation.py
