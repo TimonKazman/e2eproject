@@ -15,7 +15,7 @@ jobs:
                 python-version: '3.x'
             
             - name: Install dependencies
-              run: pip install -r .\requirements.txt
+              run: pip install -r ../requirements.txt
 
             - name: Run data ingestion #file which trains the model and generates a plot.png & metrics.json to compare branch vs main
               run: python .\src\components\data_ingestion.py
