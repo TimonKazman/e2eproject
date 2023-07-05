@@ -1,5 +1,6 @@
 import os 
 import sys
+import json
 from dataclasses import dataclass
 
 # Get the parent directory of the current file (assuming 'data_transformation.py' is located in the 'components' folder)
@@ -15,7 +16,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolu
 
 from exception import CustomException
 from logger import logging
-from utils import save_object, save_object_single
+from utils import save_object, save_object_single, save_metrics
 
 @dataclass
 class ModelTrainerConfig:
@@ -91,10 +92,14 @@ class ModelTrainer:
             mape = mean_absolute_percentage_error(y_test, predicted)
             r2 = r2_score(y_test, predicted)
 
+            save_metrics(rmse=rmse, mae=mae, mape=mape, r2=r2)
+            logging.info("Metrics in json saved.")
+
             return r2, rmse, mae, mape
 
         except Exception as e:
             raise CustomException(e, sys)
 
 if __name__ == '__main__':
-    pass
+    obj = ModelTrainer()
+    obj.initiate_model_trainer()

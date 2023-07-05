@@ -1,6 +1,7 @@
 import os
 import sys
 import dill
+import json
 
 import numpy as np
 import pandas as pd
@@ -73,6 +74,29 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param) -> dict:
             report[list(models.keys())[i]] = test_model_score
 
         return report
+    
+    except Exception as e:
+        raise CustomException(e, sys)
+    
+def save_metrics(rmse=None, mae=None, mape=None, r2=None):
+    try:
+
+        metrics = {
+            "rmse": rmse,
+            "mae": mae,
+            "mape": mape,
+            "r2": r2
+        }
+
+        folder_path = 'metrics'
+        os.makedirs(folder_path, exist_ok=True)
+
+        file_path = os.path.join(folder_path, 'metrics.json')
+        with open(file_path, 'w') as file:
+            json.dump(metrics, file)
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+    
