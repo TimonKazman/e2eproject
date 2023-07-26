@@ -9,7 +9,6 @@ import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
 
-sys.path.append('C:\\Users\\timon\\OneDrive\\Documents\\Data Science\\E2EProject\\src')
 from exception import CustomException
 
 def save_object(file_path, obj_train=None, obj_test=None):

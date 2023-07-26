@@ -5,18 +5,18 @@ import os
 import numpy as np
 import pandas as pd
 
-sys.path.append('C:\\Users\\timon\\OneDrive\\Documents\\Data Science\\E2EProject\\src')
+# sys.path.append('C:\\Users\\timon\\OneDrive\\Documents\\Data Science\\E2EProject\\src')
 
-from utils import save_object
-from exception import CustomException
-from logger import logging
+from src.utils import save_object
+from src.exception import CustomException
+from src.logger import logging
 
 '''
     # Get the parent directory of the current file (assuming 'data_transformation.py' is located in the 'components' folder)
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
 
-    print(current_dir)
+    print(current_dir) 
     print(parent_dir)
 
     # Add the parent directory to the Python path
