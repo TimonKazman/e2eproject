@@ -12,7 +12,6 @@ jobs:
         defaults:
             run:
                 working-directory: ./E2EPROJECT/  # Updated working directory
-              shell: bash -1 {0}
         # env:
         #     MODE: ".env"
         steps:
