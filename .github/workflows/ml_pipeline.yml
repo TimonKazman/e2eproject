@@ -20,9 +20,9 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv venv
+          python -m venv venv 
           source venv/bin/activate
-      
+      # change venv to e2e...
       - name: Install dependencies
         run: pip install -r requirements.txt
         
