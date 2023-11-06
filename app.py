@@ -23,7 +23,7 @@ def predict_datapoint():
         # df['Date'] = df['Date'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
         date_string = CustomData(
-            request.form['date'] # yolo kjladsjf
+            request.form['date']
         )
 
         df = date_string.get_data_as_data_frame()
